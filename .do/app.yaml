@@ -1,6 +1,6 @@
-name: sample-flask
+name: stylespace.app
 services:
 - name: web
   github:
-    repo: digitalocean/sample-flask
+    repo: StyleSpaceAI/stylespace_website
     branch: main

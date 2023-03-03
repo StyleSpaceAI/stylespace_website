@@ -1,0 +1,10 @@
+export FLASK_APP=app.py
+export FLASK_DEBUG=1
+export DATABASE_URL=sqlite:///$PWD/app.db
+export MAIL_SERVER=mail_server
+export MAIL_USERNAME=yourmail@provider.com
+export MAIL_PASSWORD=email_password
+export MAIL_PORT=465
+export MAIL_SENDER=noreply@stylespace.app
+export SECRET_KEY=secret_key_change_as_you_wish_make_it_long_123
+
