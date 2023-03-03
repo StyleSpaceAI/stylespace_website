@@ -2,24 +2,49 @@
 
 {% block content %}
 
-<div class="container">
-  <div class="row justify-content-center pt-2">
-    {% if referring_uuid %}
-    <form action="{{ url_for('main.index') + '?user=' + referring_uuid }}" method="post" class="form-inline">
-    {% else %}
-    <form action="{{ url_for('main.index') }}" method="post" class="form-inline">
-    {% endif %}
-      {{ form.hidden_tag() }}
-      <div class="form-group mx-sm-3 mb-2">
-        {{ form.email(class_='input',
-                      placeholder='Your best email…',
-                      pattern='(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)',
-                      required='required',
-                      oninvalid="this.setCustomValidity('Please enter a valid email address.')",
-                      onchange="try{setCustomValidity('')}catch(e){}") }}
+    <!--Main-->
+    <div class="container pt-24 md:pt-0 mx-auto flex flex-wrap flex-col md:flex-row items-center h-screen">
+      <!--Left Col-->
+      <div class="flex flex-col w-full xl:w-3/5 justify-center lg:items-start overflow-y-hidden">
+        <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+          Transform
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+            Your Space
+          </span>
+          with AI Interior Design!
+        </h1>
+        <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+          Take your home to the next level with AI-generated room styles that perfectly suit your lifestyle and taste.
+        </p>
+
+        {% if referring_uuid %}
+        <form action="{{ url_for('main.index') + '?user=' + referring_uuid }}" method="post" class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+        {% else %}
+        <form action="{{ url_for('main.index') }}" method="post" class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+        {% endif %}
+          {{ form.hidden_tag() }}
+          <div class="mb-4">
+            <label class="block text-blue-300 py-2 font-bold mb-2" for="emailaddress">
+              Signup for early access
+            </label>
+            {{ form.email(class_='shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out',
+                          placeholder='you@somewhere.com',
+                          pattern='(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)',
+                          required='required',
+                          oninvalid="this.setCustomValidity('Please enter a valid email address.')",
+                          onchange="try{setCustomValidity('')}catch(e){}") }}
+          </div>
+
+          <div class="flex items-center justify-between pt-4">
+            {{ form.submit(class_='bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out') }}
+          </div>
+        </form>
       </div>
-      {{ form.submit(class_='btn btn-primary mb-2') }}
-    </form>
-  </div>
-</div>
+
+      <!--Right Col-->
+      <div class="w-full xl:w-2/5 h-4/6">
+        <!-- <img class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="macbook.svg" /> -->
+          <img class="mx-auto object-scale-down h-full transform transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="{{ url_for('static', filename='img/iphone.png', _external=True) }}" />
+      </div>
+    </div>
 {% endblock %}
