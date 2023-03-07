@@ -32,7 +32,7 @@ referrals = db.Table(
 class Waitlist(BaseModel, db.Model):
     __tablename__ = 'waitlist'
 
-    initial_score = 65231
+    initial_score = 174
     decrease_per_referral = 10
 
     uuid = db.Column(db.String(8), primary_key=True)
